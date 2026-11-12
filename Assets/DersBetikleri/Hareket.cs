@@ -1,12 +1,11 @@
 using UnityEngine;
 
-// HAFTA 2: DEĞİŞKENLER VE INSPECTOR
 public class Hareket : MonoBehaviour
 {
-    [SerializeField] float hiz = 1f;        // DENEY 2: 1 = uyuşuk, 3 = rahat, 10 = telaşlı. birim / saniye (float: kesirli sayı)
-    [SerializeField] bool aktif = true;     // hareket açık mı?
-    [SerializeField] int can = 3;           // int: tam sayı
-    [SerializeField] string ad = "Pierrot"; // string: metin
+    [SerializeField] float hiz = 1f;
+    [SerializeField] bool aktif = true;
+    [SerializeField] int can = 3;
+    [SerializeField] string ad = "Pierrot";
     [SerializeField] float sagSinir = 8f;
 
     void Start()
@@ -18,8 +17,6 @@ public class Hareket : MonoBehaviour
     {
         if (!aktif) return;
 
-        // Time.deltaTime: son kareden bu yana geçen saniye.
-        // 60 FPS'te de 30 FPS'te de saniyede 'hiz' birim yol alınır.
         transform.position += Vector3.right * hiz * Time.deltaTime;
 
         if (transform.position.x > sagSinir)

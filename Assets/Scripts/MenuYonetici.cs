@@ -2,15 +2,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-// 2. ekran: ana menü (Oyna / Ayarlar)
-// Ayarlar: ses açık-kapalı, oyun süresi (Kısa 20 sn / Normal 30 sn / Uzun 45 sn)
-// Seçimler PlayerPrefs ile kaydedilir; Oyun sahnesi açılınca oradan okunur.
 public class MenuYonetici : MonoBehaviour
 {
     [SerializeField] GameObject anaPanel;
     [SerializeField] GameObject ayarlarPaneli;
-    [SerializeField] TMP_Text sesYazisi;       // "Ses: Açık"
-    [SerializeField] TMP_Text sureYazisi;      // "Süre: Normal (30 sn)"
+    [SerializeField] TMP_Text sesYazisi;
+    [SerializeField] TMP_Text sureYazisi;
     [SerializeField] AudioSource hoparlor;
     [SerializeField] AudioClip tikSesi;
 
@@ -49,7 +46,6 @@ public class MenuYonetici : MonoBehaviour
         YazilariGuncelle();
     }
 
-    // 0 = Kısa, 1 = Normal, 2 = Uzun
     public void SureSec(int sure)
     {
         PlayerPrefs.SetInt("sure", sure);

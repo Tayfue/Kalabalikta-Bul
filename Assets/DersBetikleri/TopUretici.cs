@@ -1,20 +1,17 @@
 using UnityEngine;
 
-// HAFTA 3: KOŞULLAR VE DÖNGÜLER (Sekme.cs'den ayrı dosyaya taşındı)
 public class TopUretici : MonoBehaviour
 {
     [SerializeField] Sekme topPrefab;
-    [SerializeField] int adet = 1;     // DENEY 2: 1 = tek başına, 10 = normal, 50 = kalabalık
+    [SerializeField] int adet = 1;
 
     void Start()
     {
-        // DÖNGÜ: aynı işi 'adet' kez yap
         for (int i = 0; i < adet; i++)
         {
             Sekme t = Instantiate(topPrefab, Vector3.zero, Quaternion.identity);
             t.hiz = Random.insideUnitCircle.normalized * Random.Range(2f, 5f);
 
-            // switch: duruma göre seçim
             var sr = t.GetComponent<SpriteRenderer>();
             switch (i % 3)
             {

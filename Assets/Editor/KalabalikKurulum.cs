@@ -8,9 +8,6 @@ using UnityEditor.Events;
 using UnityEditor.SceneManagement;
 using TMPro;
 
-// SADECE EDİTÖR ARACI (oyunun parçası değil).
-// Üst menü: "Kalabalıkta Bul > Her Şeyi Kur" → sahneleri, prefabları ve ayarları otomatik kurar.
-// Kaynak: Claude (yapay zekâ) ile yazıldı. Kurulum bittikten sonra silinebilir.
 public static class KalabalikKurulum
 {
     const string SAHNE = "Assets/Scenes/";
@@ -38,7 +35,7 @@ public static class KalabalikKurulum
         daire = SpriteHazirla("Assets/Sprites/Daire.png", 256, false);
         SpriteHazirla("Assets/Sprites/Buton.png", 100, false);
         var butonImp = (TextureImporter)AssetImporter.GetAtPath("Assets/Sprites/Buton.png");
-        butonImp.spriteBorder = new Vector4(48, 48, 48, 48);   // 9-slice: köşeler esnemesin
+        butonImp.spriteBorder = new Vector4(48, 48, 48, 48);
         butonImp.SaveAndReimport();
         butonSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Sprites/Buton.png");
 
@@ -63,13 +60,10 @@ public static class KalabalikKurulum
             "Sahneler kuruldu. Splash sahnesi açık, Play'e bas.\nGame penceresinde çözünürlüğü 1080x1920 Portrait yap.", "Tamam");
     }
 
-    // ---------------- SAHNELER ----------------
-
     static void SplashKur()
     {
         var s = YeniSahne(5f, ARKA);
         var c = CanvasKur();
-        // Süs: renkli toplar, biri farklı
         Color[] renkler = { new Color(0.2f, 0.45f, 0.9f), new Color(0.2f, 0.45f, 0.9f), new Color(0.55f, 0.72f, 0.97f), new Color(0.2f, 0.45f, 0.9f) };
         for (int i = 0; i < 4; i++)
             Resim("Top" + i, c, daire, renkler[i], ORTA, new Vector2(-330 + i * 220, 150), new Vector2(170, 170));
@@ -125,7 +119,6 @@ public static class KalabalikKurulum
     {
         var s = YeniSahne(6f, ARKA);
 
-        // Top prefabı: daire + CircleCollider2D
         var tg = new GameObject("Top");
         tg.AddComponent<SpriteRenderer>().sprite = daire;
         tg.AddComponent<CircleCollider2D>().radius = 0.5f;
@@ -163,7 +156,6 @@ public static class KalabalikKurulum
         EditorSceneManager.SaveScene(s, SAHNE + "Oyun.unity");
     }
 
-    // A ve B aşaması için ders betiklerinin deney sahneleri
     static void DeneyMerhabaKur()
     {
         var s = YeniSahne(5f, new Color(0.2f, 0.2f, 0.25f));
@@ -198,8 +190,6 @@ public static class KalabalikKurulum
         Bagla(u, "topPrefab", topPrefab.GetComponent<Sekme>());
         EditorSceneManager.SaveScene(s, SAHNE + "Deney_Sekme.unity");
     }
-
-    // ---------------- YARDIMCILAR ----------------
 
     static Sprite SpriteHazirla(string yol, int ppu, bool altPivot)
     {
@@ -305,7 +295,6 @@ public static class KalabalikKurulum
         return AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/Sesler/" + ad + ".wav");
     }
 
-    // Dizi alanlarını (Sprite[], Image[]) doldurur
     static void BaglaDizi(Object hedef, string alan, Object[] degerler)
     {
         var so = new SerializedObject(hedef);
@@ -321,7 +310,6 @@ public static class KalabalikKurulum
         so.ApplyModifiedPropertiesWithoutUndo();
     }
 
-    // [SerializeField] private alanlara Inspector'daki gibi değer sürükler
     static void Bagla(Object hedef, string alan, Object deger)
     {
         var so = new SerializedObject(hedef);
