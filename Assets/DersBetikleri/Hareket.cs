@@ -20,7 +20,8 @@ public class Hareket : MonoBehaviour
 
         // Time.deltaTime: son kareden bu yana geçen saniye.
         // 60 FPS'te de 30 FPS'te de saniyede 'hiz' birim yol alınır.
-        transform.position += Vector3.right * hiz * Time.deltaTime;
+        // DENEY 1: Time.deltaTime silindi, hız artık bilgisayarın FPS'ine bağlı
+        transform.position += Vector3.right * hiz;
 
         if (transform.position.x > sagSinir)
             transform.position = new Vector3(-sagSinir, transform.position.y, 0f);
