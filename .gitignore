@@ -18,3 +18,5 @@
 .vs/
 .idea/
 .DS_Store
+.vscode/
+*.slnx
