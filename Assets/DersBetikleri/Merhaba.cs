@@ -29,6 +29,9 @@ public class Merhaba : MonoBehaviour
             // DENEY 1: sayaç 1 yerine 2 artıyor
             sayac = sayac + 2;
             Debug.Log("Dokunuldu: " + sayac);
+
+            // DENEY 2: her dokunuşta kare biraz küçülür (%20)
+            transform.localScale = transform.localScale * 0.8f;
         }
     }
 }
