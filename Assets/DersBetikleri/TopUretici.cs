@@ -4,7 +4,7 @@ using UnityEngine;
 public class TopUretici : MonoBehaviour
 {
     [SerializeField] Sekme topPrefab;
-    [SerializeField] int adet = 10;
+    [SerializeField] int adet = 1;     // DENEY 2: 1 = tek başına, 10 = normal, 50 = kalabalık
 
     void Start()
     {
