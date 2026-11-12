@@ -26,7 +26,8 @@ public class Merhaba : MonoBehaviour
         // Dokunulan nokta bu nesnenin collider'ının içinde mi?
         if (GetComponent<Collider2D>().OverlapPoint(dunya))
         {
-            sayac = sayac + 1;
+            // DENEY 1: sayaç 1 yerine 2 artıyor
+            sayac = sayac + 2;
             Debug.Log("Dokunuldu: " + sayac);
         }
     }
