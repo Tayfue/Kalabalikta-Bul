@@ -20,7 +20,8 @@ public class Sekme : MonoBehaviour
 
         // KOŞUL: kenara değdiyse yönü ters çevir
         if (p.x > sinir.x || p.x < -sinir.x) hiz.x = -hiz.x;
-        if (p.y > sinir.y || p.y < -sinir.y) hiz.y = -hiz.y;
+        // DENEY 1: y kontrolü kapatıldı, top sadece yatayda sekiyor
+        // if (p.y > sinir.y || p.y < -sinir.y) hiz.y = -hiz.y;
 
         transform.position = p;
     }
